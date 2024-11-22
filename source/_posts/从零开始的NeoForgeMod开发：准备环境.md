@@ -5,20 +5,18 @@ tags: [mcmod, dev]
 categories: [mcmod]
 ---
 
-# 从零开始的NeoForgeMod开发：准备环境
-
-## 前言
+# 前言
 
 本教程将基于Nulla Multiblock这个mod的开发过程，展示NeoForge-1.21.1 MCMOD的开发细节。其中将尽量不使用其他mod api来开发，方便读者更好理解。
 
-## 开发环境
+# 开发环境
 
 本教程所开发对应的MC版本为1.21.1，Mojang官方分发的是Java 21，所以需要安装的JDK版本为21。
 NeoForge推荐使用的OpenJDK发行版是巨硬的发行版，但这里使用的是Liberica OpenJDK，读者也可以自行选择其他OpenJDK发行版，比如Eclipse Temurin或者对应OS打包的OpenJDK，这里不再赘述，也不提供任何分发。
 
 MC Mod开发同样是Java开发，这里推荐使用的Java IDE是JetBrains IDEA，NeoForge官方的开发模板为IDEA和Eclipse都作了适配，但是官方说其他IDE也是可以用的，只要有Java和Gradle的适配。
 
-## 创建项目
+# 创建项目
 
 开发基于NeoForge的mod需要使用NeoForge的项目模板：NeoForge提供了[ModGradleDev](https://github.com/NeoForgeMDKs/MDK-1.21-ModDevGradle)和[NeoGradle](https://github.com/NeoForgeMDKs/MDK-1.21-NeoGradle)两种，ModGradleDev是更新的模板，建议使用这个。
 
