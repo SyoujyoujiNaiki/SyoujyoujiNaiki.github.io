@@ -46,7 +46,7 @@ public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(
 Properties是描述Item属性的一个类，我们可以在Properties里面定义Item的一些属性，比如上面代码描述，作为食物的属性，还有其他比如作为武器的伤害属性等等，这里只做注册演示，不一一赘述，待后续章节介绍。
 如果不想有这些额外属性，只需要new Item.Propertiers()即可。
 
-完成上述注册后，还有最重要的一步，即，把我们上面创建的Register ITEMS加入到Mod加载中，即在我们的Mod入口源代码文件<ModId>.java的构造方法里加上
+完成上述注册后，还有最重要的一步，即，把我们上面创建的Register ITEMS加入到Mod加载中，即在我们的Mod入口源代码文件modid.java的构造方法里加上
 ```java "Register to mod event bus"
 ITEMS.register(modEventBus);
 ```
@@ -86,15 +86,15 @@ ITEMS.register(modEventBus);
 
 在displayItem里面的output添加我们的物品（注意，这里需要使用我们上面注册好的EXAMPLE_ITEM静态实例而不是再new一个），这样可以直接添加到我们自己定义的创造模式标签页里。
 
-进入游戏后，我们可以看到Building Blocks这一标签页最后出现了一个黑紫相交图案的物品，名称是item.<modid>.example_item
+进入游戏后，我们可以看到Building Blocks这一标签页最后出现了一个黑紫相交图案的物品，名称是item.modid.example_item
 ![Example Item](1-3.png)
 
-这就是我们添加的物品，但是我们并没有给他相应的资源（assets），包括本地化（i18n或者叫l10n）和纹理（Texture）。游戏内的资源都统一放置在resources/assets/<modid>下面。
+这就是我们添加的物品，但是我们并没有给他相应的资源（assets），包括本地化（i18n或者叫l10n）和纹理（Texture）。游戏内的资源都统一放置在resources/assets/modid下面。
 
 ## 本地化资源
 
-前面我们看到的“item.<modid>.example_item”这一物品名称是游戏里的ID，“item”和“<modid>”类似于命名空间，可以让我们定义同名的物品（item）或方块（block）。
-要让这个游戏内部使用的名字变成我们在游戏里正常见到的名称，我们需要创建对应的本地化资源文件，位于src/main/resources/assets/<modid>/lang这一目录下。
+前面我们看到的“item.modid.example_item”这一物品名称是游戏里的ID，“item”和“modid”类似于命名空间，可以让我们定义同名的物品（item）或方块（block）。
+要让这个游戏内部使用的名字变成我们在游戏里正常见到的名称，我们需要创建对应的本地化资源文件，位于src/main/resources/assets/modid/lang这一目录下。
 本地化资源文件是一个json文件，命名使用语言-国家代码，即2字母的语言代码后用横线再接一个2字母的国家代码，例如美国英语是en_us，中国简体中文则是zh_cn。
 这个json文件格式是一个简单的键值对：
 ```json Key-value
@@ -113,18 +113,18 @@ ITEMS.register(modEventBus);
 
 ## 纹理资源
 
-参考上面，要添加纹理，同样要提供对应的纹理文件，这里我们可以直接简单地使用一个png图片来提供。创建一个32x32像素的png文件，命名为<item_id>.png，放置在src/main/resources/assets/<modid>/textures/item目录下即可自动匹配到对应的item_id上。
+参考上面，要添加纹理，同样要提供对应的纹理文件，这里我们可以直接简单地使用一个png图片来提供。创建一个32x32像素的png文件，命名为<item_id>.png，放置在src/main/resources/assets/modid/textures/item目录下即可自动匹配到对应的item_id上。
 
 但是我们进入游戏会发现此时依然还是紫黑相交的方形，这是纹理缺失的表现。
 
 这是因为，虽然Minecraft表现得非常像素，但是其实依然是一个3D游戏，物品，特别是当你手持物品时，同样是当作一个模型（model）来渲染的（这样就可以实现更复杂的物品，比如可以手持一根精致的法杖或者机枪而不是一个二维像素），所以我们这时还要提供物品的模型描述。
 
-Minecraft对于简单的物品已经提供了最基本的模型描述，只要在src/main/resources/assets/<modid>/models/item下创建同名的json文件，填入以下内容
+Minecraft对于简单的物品已经提供了最基本的模型描述，只要在src/main/resources/assets/modid/models/item下创建同名的json文件，填入以下内容
 ```json models
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "<modid>:item/example_item"
+    "layer0": "modid:item/example_item"
   }
 }
 ```
