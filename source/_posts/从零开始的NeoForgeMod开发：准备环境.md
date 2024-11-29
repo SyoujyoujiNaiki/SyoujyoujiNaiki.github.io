@@ -9,6 +9,8 @@ categories: [mcmod]
 
 本教程将基于Nulla Multiblock这个mod的开发过程，展示NeoForge-1.21.1 MCMOD的开发细节。其中将尽量不使用其他mod api来开发，方便读者更好理解。
 
+本文仅使用NeoForge对应MC版本1.21.1进行Mod开发，如需更多其他内容请移步NeoForged官方文档：[NeoForged](https://docs.neoforged.net/docs/gettingstarted/)
+
 # 开发环境
 
 本教程所开发对应的MC版本为1.21.1，Mojang官方分发的是Java 21，所以需要安装的JDK版本为21。
