@@ -36,3 +36,12 @@ registrate_version=MC1.21-1.3.0+55
 ```
 
 修改完gradle的编译脚本后，选择使用IDEA的sync gradle project来更新编译依赖，这样就完成了Registrate的引入。
+
+# 声明Registrate
+
+要开始使用Registrate非常简单，我们只需要在我们的Mod入口主文件里面加入一句声明：
+```java Registrate
+    // Registrate
+    public static final Registrate REGISTRATE = Registrate.create(MOD_ID);
+```
+接下来我们直接使用REGISTRATE就可以开始注册物品和方块等，而不用再一次次地不断创建对应类型的Register了，现在我们可以把之前创建的那些DeferredRegister.Items和BlockDeferredRegister.Blocks代码删除了。
